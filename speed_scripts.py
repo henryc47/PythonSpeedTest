@@ -2,6 +2,15 @@ import time
 import matplotlib.pyplot as plt
 import numpy as np
 import random
+import sys
+
+def main() -> None:
+    if len(sys.argv)!=3:
+        print("invalid number of arguments, please provide 2 integer command line arguments, n and k")
+        print("n is the amount of data to time, k is the number of tests per lookup time")
+    else:
+        plot_lookup_times(int(sys.argv[1]),int(sys.argv[2]))
+        _ = input('Hit enter to exit')
 
 #calculate the time taken to lookup random values in different data structures
 def get_lookup_times(n : int, k : int) -> tuple[np.ndarray,np.ndarray,np.ndarray]:
@@ -65,4 +74,5 @@ def dict_find_time_per_call(test_dict : dict[int],k : int,random_list : list[int
     end_time_ns : int = time.perf_counter_ns()
     return (end_time_ns-start_time_ns)/k        
 
-
+if __name__ == "__main__":
+    main()
