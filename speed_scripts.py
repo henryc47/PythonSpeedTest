@@ -45,3 +45,16 @@ def random_gen_test(n : int, k : int) -> int:
         random_num = random.randrange(n)
     end_time_ns : int = time.perf_counter_ns()
     return (end_time_ns-start_time_ns)
+
+#test to see how quickly we can lookup k random integers in a list of length n, return time taken in ns
+def list_access_test(n : int, k : int) -> int:
+    #create the list
+    our_list : list[int] = []
+    for i in range(n):
+        our_list.append(i)
+    start_time_ns : int = time.perf_counter_ns()
+    for i in range(k):
+        random_num = random.randrange(n)
+        _ = our_list.index(random_num)
+    end_time_ns : int = time.perf_counter_ns()
+    return (end_time_ns-start_time_ns)
