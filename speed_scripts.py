@@ -31,10 +31,10 @@ def set_build_test(n : int) -> int:
 
 #build a dict of size n, return time taken in ns
 def dict_build_test(n : int) -> int:
-    our_dict : set[int] = {}
+    our_dict : dict[int,bool] = {}
     start_time_ns : int = time.perf_counter_ns()
     for i in range(n):
-        our_dict[i] = None
+        our_dict[i] = False
     end_time_ns : int = time.perf_counter_ns()
     return (end_time_ns-start_time_ns)
 
@@ -60,7 +60,7 @@ def list_access_test(n : int, k : int) -> int:
     return (end_time_ns-start_time_ns)
 
 def list_access_test(n : int, k : int) -> int:
-    #create the list
+    #create the set
     our_list : list[int] = []
     for i in range(n):
         our_list.append(i)
@@ -71,15 +71,15 @@ def list_access_test(n : int, k : int) -> int:
     end_time_ns : int = time.perf_counter_ns()
     return (end_time_ns-start_time_ns)
 
-def set_access_test(n : int, k : int) -> int:
-    #create the list
-    our_set : set[int] = set()
+def dict_access_test(n : int, k : int) -> int:
+    #create the dictionary
+    our_dict : dict[int,bool] = {}
     for i in range(n):
-        our_set.add(i)
+        our_dict[i] = False
     start_time_ns : int = time.perf_counter_ns()
     for i in range(k):
         random_num = random.randrange(n)
-        _ = random_num in our_set
+        _ = our_dict[random_num]
     end_time_ns : int = time.perf_counter_ns()
     return (end_time_ns-start_time_ns)
 
