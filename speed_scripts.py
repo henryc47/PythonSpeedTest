@@ -1,6 +1,7 @@
 import time
 import matplotlib as plt
 import numpy as np
+import random
 
 #do nothing n times, returns time taken in ns
 def loop_test(n : int) -> int:
@@ -37,3 +38,10 @@ def dict_build_test(n : int) -> int:
     end_time_ns : int = time.perf_counter_ns()
     return (end_time_ns-start_time_ns)
 
+#test to see how quickly we can generate k random integers in range n, return time taken in ns
+def random_gen_test(n : int, k : int) -> int:
+    start_time_ns : int = time.perf_counter_ns()
+    for i in range(k):
+        random_num = random.randrange(n)
+    end_time_ns : int = time.perf_counter_ns()
+    return (end_time_ns-start_time_ns)
